@@ -145,6 +145,7 @@
                             <th>User</th>
                             <th>Takeoff</th>
                             <th>Destination</th>
+                            <th>Amount</th>
                             <th>Bus</th>
                             <th>Active</th>
                         </tr>
@@ -153,6 +154,7 @@
                                 <td>{{$trip["user"]['firstname']}}  {{$trip["user"]['lastname']}}</td>
                                 <td>{{$trip["takeoff"]}}</td>
                                 <td>{{$trip["destination"]}}</td>
+                                <td>{{$trip["amount"]}}</td>
                                 <td>{{$trip["bus"]}}</td>
                                 <td>{{$trip["active"]}}</td>
                             </tr>

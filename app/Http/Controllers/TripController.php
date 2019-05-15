@@ -52,7 +52,7 @@ class TripController extends Controller
            $cardDetails["amount"] = $newAmount;
            $newCardDetails = $card->updateCardAmount($cardDetails);
 
-           return "You have started a new trip";
+           return "You have started a new trip <a href='/'> return to home";
        }
        catch (\Exception $e){
            return $e;
@@ -103,7 +103,7 @@ class TripController extends Controller
             $newCardDetails = $card->updateCardAmount($cardDetails);
             $newTripDetails = $trip->updateTripAmountAndEndTrip($userTrip);
 
-            return "Successfully ended the trip";
+            return "Successfully ended the trip <a href='/'> return to home";
         }
         catch(\Exception $e)
         {
