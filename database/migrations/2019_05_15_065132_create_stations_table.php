@@ -17,6 +17,8 @@ class CreateStationsTable extends Migration
             $table->bigIncrements('id');
             $table->string('name');
             $table->integer('zone');
+            $table->boolean('double_zone')->default(false);
+            $table->integer('zone2')->default(0);
             $table->timestamps();
         });
     }

@@ -65,33 +65,99 @@
     </head>
     <body>
         <div class="flex-center position-ref full-height">
-            @if (Route::has('login'))
-                <div class="top-right links">
-                    @auth
-                        <a href="{{ url('/home') }}">Home</a>
-                    @else
-                        <a href="{{ route('login') }}">Login</a>
-
-                        @if (Route::has('register'))
-                            <a href="{{ route('register') }}">Register</a>
-                        @endif
-                    @endauth
-                </div>
-            @endif
 
             <div class="content">
                 <div class="title m-b-md">
-                    Laravel
+                    Letters Africa Test
                 </div>
 
-                <div class="links">
-                    <a href="https://laravel.com/docs">Docs</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://blog.laravel.com">Blog</a>
-                    <a href="https://nova.laravel.com">Nova</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
+                <div class="col-md-12">
+                    <form action="/trip/start-trip" method="post">
+                        {{csrf_field()}}
+
+                        <div class="form-group">
+                            <label>User:</label>
+                            <select name="user_id" class="col-md-6">
+                                <option value="">Select User</option>
+                                @foreach($users as $user)
+                                    <option value="{{$user["id"]}}"> {{$user["lastname"]}} {{$user["firstname"]}} {{$user["middlename"]}}</option>
+                                @endforeach
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-6">Takeoff:</label>
+                            <select name="takeoff" class="col-md-6">
+                                <option value="">Select Takeoff Station</option>
+                                @foreach($stations as $station)
+                                    <option value="{{$station["id"]}}"> {{$station["name"]}}</option>
+                                @endforeach
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-6">Destination:</label>
+                            <select name="destination" class="col-md-6">
+                                <option value="">Select Destination Station</option>
+                                @foreach($stations as $station)
+                                    <option value="{{$station["id"]}}"> {{$station["name"]}}</option>
+                                @endforeach
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-6">Bus?</label>
+                            <Select name="bus" class="col-md-6">
+                                <option value="No" selected>No</option>
+                                <option value="Yes">Yes</option>
+                            </Select>
+                        </div>
+
+
+                        <input type="submit" value="submit">
+                    </form>
+                </div>
+
+                <div class="col-md-12">
+                    <hr>
+                    <h3>End Trip</h3>
+                    <form method="post" action="/trip/end-trip">
+                        {{csrf_field()}}
+                       <div class="form-group">
+                           <label>Select Trip to Close: </label>
+                           <select name="id" class="col-md-6">
+                               <option value="">Select Trip</option>
+                               @foreach($inactiveTrips as $trip)
+                                    <option value="{{$trip["id"]}}">User: {{$trip["user"]['firstname']}}  {{$trip["user"]['lastname']}} || Des: {{$trip["destination"]}} || Takeoff: {{$trip["takeoff"]}} || Bus: {{$trip['bus']}}</option>
+                               @endforeach
+                           </select>
+                       </div>
+
+                        <input type="submit" value="End Trip">
+                    </form>
+                </div>
+
+                <div>
+                    <hr>
+                    <h3>All Trips</h3>
+                    <table border="1">
+                        <tr>
+                            <th>User</th>
+                            <th>Takeoff</th>
+                            <th>Destination</th>
+                            <th>Bus</th>
+                            <th>Active</th>
+                        </tr>
+                        @foreach($trips as $trip)
+                            <tr>
+                                <td>{{$trip["user"]['firstname']}}  {{$trip["user"]['lastname']}}</td>
+                                <td>{{$trip["takeoff"]}}</td>
+                                <td>{{$trip["destination"]}}</td>
+                                <td>{{$trip["bus"]}}</td>
+                                <td>{{$trip["active"]}}</td>
+                            </tr>
+                        @endforeach
+                    </table>
                 </div>
             </div>
         </div>

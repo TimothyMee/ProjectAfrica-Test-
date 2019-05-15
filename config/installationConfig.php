@@ -9,11 +9,10 @@ return [
     ],
 
     'stations' => [
-        ['name' => '5th' , 'zone' => '1' ],
-        ['name' => 'Pelham Parkway' , 'zone' => '1' ],
-        ['name' => 'Pelham Parkway' , 'zone' => '2' ],
-        ['name' => 'Bronx' , 'zone' => '3' ],
-        ['name' => 'Guns Hill' , 'zone' => '2' ],
+        ['name' => '5th' , 'zone' => 1 ],
+        ['name' => 'Pelham Parkway' , 'zone' => 1 , 'double_zone' => true, 'zone2' => 2 ],
+        ['name' => 'Bronx' , 'zone' => 3 ],
+        ['name' => 'Guns Hill' , 'zone' => 2 ],
     ],
 
     'fares'   => [

@@ -18,8 +18,10 @@ class CreateTripsTable extends Migration
             $table->integer('user_id');
             $table->integer('takeoff'); //station id
             $table->integer('destination'); //station id
-            $table->boolean('bus'); //bus journey
+            $table->boolean('bus')->default(false); //bus journey
+            $table->boolean('active')->default(true); //trip hasn't been ended
             $table->decimal('amount');
+            $table->timestamps();
         });
     }
 

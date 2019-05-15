@@ -11,6 +11,6 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', "TripController@index");
+Route::post('/trip/start-trip', "TripController@startTrip");
+Route::post('/trip/end-trip', "TripController@endTrip");
