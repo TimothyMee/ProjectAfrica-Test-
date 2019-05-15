@@ -39,7 +39,7 @@ class Trip extends Model
 
     public function updateTripAmountAndEndTrip($data)
     {
-        return $this->where('user_id', $data['user_id'])
+        return $this->where('id', $data['id'])
             ->update(
                 [
                     'amount' => $data['amount'],

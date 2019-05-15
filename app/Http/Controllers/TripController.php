@@ -70,14 +70,14 @@ class TripController extends Controller
             $destinationStation = $station->getStationByID(["id" => $userTrip["destination"]]);
 
             if(!$userTrip['bus']){
-                if($takeoffStation["double_zone"]){
+                if($takeoffStation["double_zone"] == 1){
                     //check the zone of the departure station and set the amount
                     $zone = $destinationStation["zone"];
                     if($zone == $takeoffStation["zone"] || $zone == $takeoffStation["zone2"]){
                         $userTrip["amount"] = 2.50;
                     }
                 }
-                elseif($destinationStation["double_zone"]){
+                elseif($destinationStation["double_zone"] == 1){
                     //check the zone of the takeoff station and set the amount
                     $zone = $takeoffStation["zone"];
                     if($zone == $destinationStation["zone"] || $zone == $destinationStation["zone2"]){
